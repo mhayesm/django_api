@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from rest_framework import viewsets
 
-# Create your views here.
+from .serializers import MovieSerializer
+from .models import Movie
+
+class MovieViewSet(viewsets.ModelViewSet):
+    queryset = Movie.objects.all().order_by('id')
+    serializer_class = MovieSerializer
